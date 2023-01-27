@@ -1,5 +1,5 @@
-# design-patterns-derivatives-python
+# Design Patterns for Derivatives Pricing in Python
 
-Python code adapted from Mark Joshi's C++ Design Patterns and Derivatives Pricing (2nd edition).
+A collection of Python code adapted from Mark Joshi's C++ Design Patterns and Derivatives Pricing (2nd edition).
 
-I hope this resource will be useful for aspiring programmers and practitioners in quantitative finance.
+I hope this resource will be useful for any aspiring practitioners in quantitative finance.
