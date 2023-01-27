@@ -15,18 +15,12 @@ class PayOffCall(PayOff):
     def __init__(self, strike):
         self._strike = strike
     
-    def get_strike(self):
-        return self._strike
-    
     def calculate_payoff(self, spot):
         return max(self._strike - spot, 0)
 
 class PayOffPut(PayOff):
     def __init__(self, strike):
         self._strike = strike
-    
-    def get_strike(self):
-        return self._strike
     
     def calculate_payoff(self, spot):
         return max(spot - self._strike, 0)
