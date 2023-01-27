@@ -1,4 +1,4 @@
-# Design Patterns for Derivatives Pricing in Python
+# Design patterns for derivatives pricing in Python
 
 A collection of Python code adapted from Mark Joshi's C++ Design Patterns and Derivatives Pricing (2nd edition).
 
