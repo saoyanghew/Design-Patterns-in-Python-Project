@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def simple_mc_main_1(expiry, strike, spot, vol, r, paths):
 
     # define required variables
@@ -12,8 +13,7 @@ def simple_mc_main_1(expiry, strike, spot, vol, r, paths):
 
     # perform computation of running_sum
     for i in range(paths):
-        this_gaussian = np.random.normal(0, 1, 1)
-        this_spot = moved_spot * np.exp(std_dev * this_gaussian)
+        this_spot = moved_spot * np.exp(std_dev * np.random.normal(0, 1, 1))
         this_payoff = np.max(this_spot - strike, 0)
         running_sum += this_payoff
 
