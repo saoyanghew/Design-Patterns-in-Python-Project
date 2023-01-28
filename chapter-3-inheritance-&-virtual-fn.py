@@ -47,7 +47,7 @@ def simple_mc_main_2(payoff, expiry, spot, vol, r, paths):
     return print(mean)
 
 # test
-simple_mc_main_3(PayOffCall(7), 10, 1, 2, 0.01, 5)
+simple_mc_main_2(PayOffCall(7), 10, 1, 2, 0.01, 5)
 
 ## adding a more complex option type as an inherited class
 ## strike is now a list
@@ -64,4 +64,4 @@ class PayOffDoubleDigital(PayOff):
             return 1
 
 ## test
-simple_mc_main_3(PayOffDoubleDigital((2,5)), 10, 1, 2, 0.01, 5)
+simple_mc_main_2(PayOffDoubleDigital((2,5)), 10, 1, 2, 0.01, 5)
