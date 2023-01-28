@@ -3,7 +3,7 @@ import numpy as np
 # define the base payoff class
 
 class PayOff:
-    def __init__(self):
+    def __init__(self, strike):
         pass
 
     def calculate_payoff(self, spot):
