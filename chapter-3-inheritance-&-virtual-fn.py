@@ -64,4 +64,4 @@ class PayOffDoubleDigital(PayOff):
             return 1
 
 ## test
-simple_mc_main_3(PayOffDoubleDigital((2,5)), "double_digital", 10, 1, 2, 0.01, 5)
+simple_mc_main_3(PayOffDoubleDigital((2,5)), 10, 1, 2, 0.01, 5)
