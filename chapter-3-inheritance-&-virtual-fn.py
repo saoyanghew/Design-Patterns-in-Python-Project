@@ -25,7 +25,9 @@ class PayOffPut(PayOff):
     def calculate_payoff(self, spot):
         return max(spot - self._strike, 0)
 
-def simple_mc_main_3(payoff, expiry, spot, vol, r, paths):
+# no change from chapter 2's function
+
+def simple_mc_main_2(payoff, expiry, spot, vol, r, paths):
 
     # define required variables
     variance = expiry * vol ** 2
