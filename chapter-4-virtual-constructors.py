@@ -119,7 +119,7 @@ class ParametersInner:
         # base class
         pass
 
-class Parameters(ParametersInner):
+class ParametersConstant(ParametersInner):
     def __init__(self, constant):
         self._constant = constant
         self._constant_square = constant * constant
@@ -130,7 +130,7 @@ class Parameters(ParametersInner):
     def integral_square(self, t1, t2):
         return (t2 - t1) * self._constant_square
 
-class ParametersConstant(Parameters):
+class Parameters(ParametersConstant):
     def __init__(self, constant):
         super().__init__(constant)
 
@@ -154,8 +154,8 @@ class ParametersConstant(Parameters):
 def simple_mc_main_4(option, spot, parameters, paths):
 
     # define required variables
-    vol = ParametersConstant(parameters[0])
-    r = ParametersConstant(parameters[1])
+    vol = Parameters(parameters[0])
+    r = Parameters(parameters[1])
     expiry = option.get_expiry()
     variance = vol.integral_square(0, expiry)
     std_dev = np.sqrt(variance)
