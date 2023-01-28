@@ -25,17 +25,7 @@ class PayOffPut(PayOff):
     def calculate_payoff(self, spot):
         return max(spot - self._strike, 0)
 
-# define inherited class using case when
-def option_matching(option, strike):
-    match option:
-        case "call":
-            return PayOffCall(strike)
-        case "put":
-            return PayOffPut(strike)
-        case _:
-            raise ValueError("Unknown option type found!")
-
-def simple_mc_main_3(strike, option, expiry, spot, vol, r, paths):
+def simple_mc_main_3(payoff, expiry, spot, vol, r, paths):
 
     # define required variables
     variance = expiry * vol ** 2
@@ -43,9 +33,6 @@ def simple_mc_main_3(strike, option, expiry, spot, vol, r, paths):
     ito_correct = -0.5 * variance
     moved_spot = spot * np.exp(r * expiry + ito_correct)
     running_sum = 0
-
-    # define inherited class using case when
-    payoff = option_matching(option, strike)
 
     # perform required computation
     for i in range(paths):
@@ -58,7 +45,7 @@ def simple_mc_main_3(strike, option, expiry, spot, vol, r, paths):
     return print(mean)
 
 # test
-simple_mc_main_3(7, "call", 10, 1, 2, 0.01, 5)
+simple_mc_main_3(PayOffCall(7), 10, 1, 2, 0.01, 5)
 
 ## adding a more complex option type as an inherited class
 ## strike is now a list
@@ -74,17 +61,5 @@ class PayOffDoubleDigital(PayOff):
         else:
             return 1
 
-## redefine option_matching
-def option_matching(option, strike):
-    match option:
-        case "call":
-            return PayOffCall(strike)
-        case "put":
-            return PayOffPut(strike)
-        case "double_digital":
-            return PayOffDoubleDigital(strike)
-        case _:
-            raise ValueError("Unknown option type found!")
-
 ## test
-simple_mc_main_3((2, 5), "double_digital", 10, 1, 2, 0.01, 5)
+simple_mc_main_3(PayOffDoubleDigital((2,5)), "double_digital", 10, 1, 2, 0.01, 5)
