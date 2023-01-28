@@ -25,7 +25,7 @@ class PayOff:
 
 # creating the simple Monte Carlo model using the PayOff class
 
-def simple_mc_main_2(strike, option, expiry, spot, vol, r, paths):
+def simple_mc_main_2(payoff, expiry, spot, vol, r, paths):
 
     # define required variables
     variance = expiry * vol ** 2
@@ -37,7 +37,7 @@ def simple_mc_main_2(strike, option, expiry, spot, vol, r, paths):
     # perform required computation
     for i in range(paths):
         this_spot = moved_spot * np.exp(std_dev * np.random.normal(0, 1, 1))
-        running_sum += PayOff(strike, option).calculate_payoff(this_spot)
+        running_sum += payoff.calculate_payoff(this_spot)
 
     # return price of the option
     mean = running_sum / paths
@@ -45,7 +45,11 @@ def simple_mc_main_2(strike, option, expiry, spot, vol, r, paths):
     return print(mean)
 
 # test
-simple_mc_main_2(7, "call", 10, 1, 2, 0.01, 5)
+callpayoff = PayOff(7, "call")
+simple_mc_main_2(callpayoff, 10, 1, 2, 0.01, 5)
+
+putpayoff = PayOff(7, "put")
+simple_mc_main_2(putpayoff, 10, 1, 2, 0.01, 5)
 
 # further extensibility defects
 
